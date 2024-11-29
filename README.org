@@ -1,0 +1,38 @@
+* Paddock cleaning code
+Used in Salvacion et al. 2024. Derived from internal packages used by the C4AP
+organisation.
+
+** Usage
+In ~clean_paddock.r~, simply insert relevant paddock ~sf~ objects where specified
+by comments:
+
+#+begin_src r
+## Insert paddock dataframe here
+paddock_df <- ...
+
+## Insert paddock boundary here
+boundaries <- ...
+#+end_src
+
+~paddock_df~ must be a standard ~sf~ object, with geometry type ~POINT~.
+
+~boundaries~ must be a standard ~sf~ object, with geometry type ~POLYGON~.
+
+Column names (e.g. "swath_width", "yield", etc.) are specified in the
+~paddock_cleaning~ function:
+
+#+begin_src r
+paddock_cl <-
+    paddock_cleaning(
+        paddock,
+        bounds_mls,
+        response = ...,
+        Bearing = ...,
+        Speed = ...,
+        Swath_Width = ...,
+        Distance = ...,
+        TRT = ...
+    )
+#+end_src
+
+If not specified (left as ~NULL~), the feature will not be cleaned.
